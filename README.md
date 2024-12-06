@@ -22,7 +22,7 @@
 
 发布操作由GitHub Actions工作流完成，tag名为操作执行的时间（UTC+0时间）
 
-- 位置：本仓库[Releases页面](/anosu/DMM-Mod/releases)
+- 位置：本仓库[Releases页面](https://github.com/anosu/DMM-Mod/releases)
 - 时间：每天北京时间下午4点检查版本更新
 - 版本：下载时请选择最新tag的最新版下载
 
