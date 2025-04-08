@@ -16,6 +16,7 @@
 
 - [ガークリR（少女艺术绮谭）](https://girlscreation-r.com/)
 - [クルスタX（闪耀星骑士）](https://x.twinklestarknights.jp/)
+- [テンパラX（天启悖论）](https://tenkei-paradox.com/x)
 
 
 ## 发布相关
@@ -42,6 +43,10 @@
 
 缓存位置: `/storage/emulated/0/Android/data/包名/files/UnityCache`
 
+#### テンパラX（天启悖论）
+
+- 主线、部分活动剧情翻译（其他的剧情需要供档，暂未补充）
+- 去除游戏内动态加载的马赛克（不包含Spine源文件上的码）
 
 ## 补充说明
 
@@ -52,14 +57,15 @@
     - 原作者维护了一个工作流，功能相同，未修改包名，没有共存需求建议用这个[TSKHook-frida](https://github.com/TSKModding/TSKHook-frida)
 - 少女艺术绮谭
     - 翻译使用SakuraLLM v0.9-14b模型
-
+- 天启悖论
+    - 原项目（翻译以及BepInEx插件）地址：https://github.com/anosu/tenkeiparadoxx-translation
 
 ## 相关项目
 
 - [TSKHook](https://github.com/TSKModding/TSKHook)
 - [TSKHook-frida](https://github.com/TSKModding/TSKHook-frida)
 - [GCMod](https://github.com/anosu/GCMod)
-
+- [tenkeiparadoxx-translation](https://github.com/anosu/tenkeiparadoxx-translation)
 
 ## 免责声明
 
