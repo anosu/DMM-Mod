@@ -17,6 +17,7 @@
 - [ガークリR（少女艺术绮谭）](https://girlscreation-r.com/)
 - [クルスタX（闪耀星骑士）](https://x.twinklestarknights.jp/)
 - [テンパラX（天启悖论）](https://tenkei-paradox.com/x)
+- [STELLAR IDOL PROJECT 〜 X 〜](https://x.siprj.com/)
 
 
 ## 发布相关
@@ -47,6 +48,12 @@
 
 - 主线、部分活动剧情翻译（其他的剧情需要供档，暂未补充）
 - 去除游戏内动态加载的马赛克（不包含Spine源文件上的码）
+
+#### STELLAR IDOL PROJECT 〜 X 〜
+
+- 该Mod为我自用，不包含翻译功能，也不保证任何安全和稳定性
+- 减小马赛克
+- 开启战斗的跳过按钮
 
 ## 补充说明
 
