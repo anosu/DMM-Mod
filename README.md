@@ -2,6 +2,8 @@
 
 此仓库用来存放DMM游戏相关的**安卓版**Mod（主要是翻译Mod）
 
+[DMM Mod Android](https://android.ntr.best/mod)
+
 ## 目录
 
 - [游戏列表](#游戏列表)
