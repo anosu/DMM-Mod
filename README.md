@@ -20,6 +20,7 @@
 - [クルスタX（闪耀星骑士）](https://x.twinklestarknights.jp/)
 - [テンパラX（天启悖论）](https://tenkei-paradox.com/x)
 - [STELLAR IDOL PROJECT 〜 X 〜](https://x.siprj.com/)
+- [オトフロR（童话前线）](https://games.dmm.co.jp/detail/otogi_f_r)（待补充）
 
 
 ## 发布相关
@@ -56,6 +57,7 @@
 - 该Mod为我自用，不包含翻译功能，也不保证任何安全和稳定性
 - 减小马赛克
 - 开启战斗的跳过按钮
+- 剧情播放语音不中断，文本框透明
 
 ## 补充说明
 
