@@ -67,7 +67,7 @@
     - 星骑士Mod的原始C#实现和翻译均来自[TSKHook](https://github.com/TSKModding/TSKHook)
     - 原作者维护了一个工作流，功能相同，未修改包名，没有共存需求建议用这个[TSKHook-frida](https://github.com/TSKModding/TSKHook-frida)
 - 少女艺术绮谭
-    - 翻译使用SakuraLLM v0.9-14b模型
+    - 翻译使用DeepSeek V3模型
 - 天启悖论
     - 原项目（翻译以及BepInEx插件）地址：https://github.com/anosu/tenkeiparadoxx-translation
 
