@@ -4,6 +4,7 @@
 
 [DMM Mod Android](https://android.ntr.best/mod)
 
+
 ## 目录
 
 - [游戏列表](#游戏列表)
@@ -20,7 +21,7 @@
 - [クルスタX（闪耀星骑士）](https://x.twinklestarknights.jp/)
 - [テンパラX（天启悖论）](https://tenkei-paradox.com/x)
 - [STELLAR IDOL PROJECT 〜 X 〜](https://x.siprj.com/)
-- [オトフロR（童话前线）](https://games.dmm.co.jp/detail/otogi_f_r)（待补充）
+- [オトフロR（童话前线）](https://games.dmm.co.jp/detail/otogi_f_r)
 
 
 ## 发布相关
@@ -29,7 +30,7 @@
 
 - 位置：本仓库[Releases页面](https://github.com/anosu/DMM-Mod/releases)
 - 时间：每天北京时间下午4点检查版本更新
-- 版本：下载时请选择最新tag的最新版下载
+- 版本：下载时请选择最新tag的最新版下载，或者去该网页下载：[DMM Mod Android](https://android.ntr.best/mod)
 
 
 ## 功能相关
@@ -59,6 +60,13 @@
 - 开启战斗的跳过按钮
 - 剧情播放语音不中断，文本框透明
 
+#### オトフロR（童话前线）
+
+- 角色剧情翻译，来自[otogitranslate](https://github.com/alex343425/otogitranslate)
+- 固定帧率为60
+- 移除游戏内动态添加的马赛克（虽然这对实际体验影响可能不大）
+
+
 ## 补充说明
 
 - 安装包默认修改包名，与官方安装包不冲突
@@ -70,6 +78,9 @@
     - 翻译使用DeepSeek V3模型
 - 天启悖论
     - 原项目（翻译以及BepInEx插件）地址：https://github.com/anosu/tenkeiparadoxx-translation
+- 童话前线
+    - 翻译来源以及网页版插件：[alex343425/otogitranslate](https://github.com/alex343425/otogitranslate)
+
 
 ## 相关项目
 
@@ -77,6 +88,7 @@
 - [TSKHook-frida](https://github.com/TSKModding/TSKHook-frida)
 - [GCMod](https://github.com/anosu/GCMod)
 - [tenkeiparadoxx-translation](https://github.com/anosu/tenkeiparadoxx-translation)
+
 
 ## 免责声明
 
