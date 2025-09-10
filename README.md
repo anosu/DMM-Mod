@@ -22,6 +22,7 @@
 - [テンパラX（天启悖论）](https://tenkei-paradox.com/x)
 - [STELLAR IDOL PROJECT 〜 X 〜](https://x.siprj.com/)
 - [オトフロR（童话前线）](https://games.dmm.co.jp/detail/otogi_f_r)
+- [マブガルX（少女花园）](https://www.muvluv-girls-garden.com/x)
 
 
 ## 发布相关
@@ -67,6 +68,11 @@
 - 角色剧情翻译，来自[otogitranslate](https://github.com/alex343425/otogitranslate)
 - 固定帧率为60
 - 移除游戏内动态添加的马赛克（虽然这对实际体验影响可能不大）
+
+#### マブガルX（少女花园）
+
+- 剧情翻译（实验性）
+- 减小马赛克
 
 
 ## 补充说明
