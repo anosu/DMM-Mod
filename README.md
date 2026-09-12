@@ -42,7 +42,7 @@ DMM 游戏安卓版 Mod 发布仓库，主要提供中文翻译、显示调整�
 | 游戏                                                         | 中文名               | 状态       | Mod 运行方式 |
 | ------------------------------------------------------------ | -------------------- | ---------- | ------------ |
 | [ドットアビス X](https://dotabyssx.fanzagames-official.com/) | 像素深渊             | 维护中     | LemonLoader  |
-| [ガークリ R](https://girlscreation-r.com/)                   | 少女艺术绮谭         | 维护中     | Frida Gadget |
+| [ガークリ R](https://girlscreation-r.com/)                   | 少女艺术绮谭         | 维护中     | LemonLoader  |
 | [クルスタ X](https://x.twinklestarknights.jp/)               | 闪耀星骑士           | 维护中     | LemonLoader  |
 | [テンパラ X](https://tenkei-paradox.com/x)                   | 天启悖论             | 已停止维护 | Frida Gadget |
 | [STELLAR IDOL PROJECT 〜 X 〜](https://x.siprj.com/)         | STELLAR IDOL PROJECT | 实验性     | Frida Gadget |
@@ -93,6 +93,7 @@ Android 11 及更高版本通常会限制普通文件管理器访问 `Android/da
 部分游戏使用使用 LemonLoader 加载 C# Mod，包括：
 
 - 像素深渊
+- 少女艺术绮谭
 - 闪耀星骑士
 - 少女花园
 
@@ -177,16 +178,52 @@ LemonLoader 根目录位于修改版应用的外部数据目录
 
 #### 功能
 
-- 主线、活动、个人剧情和主页角色语音文本翻译
-- 文本框透明，可在启用翻译时选择开启
+- 剧情标题、人物名、对话和主数据翻译，包括主页角色台词
+- 可按数据表开启或关闭主数据翻译
+- 中文字体、文本颜色、描边和字间距设置
+- 普通剧情与 CG 剧情对话框透明度设置
+- 帧率设置、可选跳过大招动画和 Toast 通知
+
+#### 配置
+
+配置文件：`UserData/GCMod.cfg`
+
+| 配置项                                 | 默认值    | 用途                                                    |
+| -------------------------------------- | --------- | ------------------------------------------------------- |
+| `General.FrameRate`                    | `60`      | 目标帧率，非正数不覆盖游戏帧率                          |
+| `Battle.IsSkipCutin`                   | `false`   | 是否跳过大招动画                                        |
+| `Translation.Enabled`                  | `true`    | 是否启用翻译                                            |
+| `Translation.Language`                 | `zh-Hans` | 翻译语言                                                |
+| `Translation.AsyncMode`                | `true`    | 是否在后台下载剧情翻译                                  |
+| `Translation.MasterData.EnabledTables` | `["*"]`   | 启用翻译的数据表，指定表名数组可限制范围，`[]` 全部关闭 |
+| `Message.Window.NormalAlpha`           | `0`       | 普通剧情对话框透明度，范围 `0` 到 `1`                   |
+| `Message.Window.CgModeAlpha`           | `0`       | CG 剧情对话框透明度，范围 `0` 到 `1`                    |
+| `Message.Text.Modified`                | `true`    | 是否修改文本样式                                        |
+
+Android 版通过配置文件调整功能，修改后需要重启游戏。完整配置说明见 [GCMod-Android](https://github.com/anosu/GCMod-Android#配置)
+
+#### 数据文件
+
+| 内容     | 路径                                       |
+| -------- | ------------------------------------------ |
+| 字体     | `UserData/GCMod/tsukuardgothic-std-medium` |
+| 翻译缓存 | `UserData/GCMod/translations/zh-Hans/`     |
+
+字体文件名区分大小写，请保留小写形式。旧 `cache` 目录会保留，新版按新的翻译结构重新下载
 
 #### 注意事项
 
 翻译使用 DeepSeek V4 Flash 模型生成，可能存在错译或上下文不一致
 
+默认异步下载剧情翻译，首次进入剧情时可能暂时显示原文，下载完成后可重新进入剧情查看。关闭 `Translation.AsyncMode` 后最多等待 10 秒，超时保留原文并继续后台加载
+
+主数据翻译优先使用可用的本地缓存，没有可用缓存时最多等待 10 秒，不受剧情异步开关影响。已加载的主数据不会自动重新翻译，需要重新加载或重启游戏
+
 #### 相关项目
 
 - [GCMod](https://github.com/anosu/GCMod)
+- [GCMod-Android](https://github.com/anosu/GCMod-Android)
+- [girlscreation-translation](https://github.com/anosu/girlscreation-translation)
 
 <a id="twinklestarknights"></a>
 
