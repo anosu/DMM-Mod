@@ -7,7 +7,7 @@ DMM 游戏安卓版 Mod 发布仓库，主要提供中文翻译、显示调整�
 
 - 下载入口：[DMM Mod Android](https://release.ntr.best/mod)
 - GitHub 发布页：[Releases](https://github.com/anosu/DMM-Mod/releases)
-- 支持架构：Android ARM64 `arm64-v8a`
+- 支持架构：Android ARM64 `arm64-v8a`；新版 LemonLoader 至少需要 Android 8.0（API 26）
 
 ## 目录
 
@@ -29,11 +29,11 @@ DMM 游戏安卓版 Mod 发布仓库，主要提供中文翻译、显示调整�
 
 ## 快速开始
 
-1. 确认设备为 64 位 ARM Android 设备（除非你是特别老的设备，否则一般不用管）
+1. 确认设备支持 ARM64，使用新版 LemonLoader 时系统至少为 Android 8.0
 2. 从 [DMM Mod Android](https://release.ntr.best/mod) 选择游戏并下载最新 APK
 3. 按系统提示允许当前浏览器或文件管理器安装未知来源应用
 4. 安装后直接启动修改版应用，部分系统可能需要手动授予 `允许读取应用列表` 的权限用于检测DMM Store，否则会跳转浏览器要求下载
-5. 使用 LemonLoader 的游戏首次启动后，Mod 会在 "Android/data" 对应的目录下自动生成配置和日志
+5. Mod 成功加载后会在 `Android/data` 对应的目录下生成配置；日志位置见 [运行目录](#运行目录)
 
 修改版 APK 会在官方包名后追加 `.mod`，因此通常可以与官方应用同时安装，但两者的游戏数据、资源缓存和设置互不共享
 
@@ -45,8 +45,8 @@ DMM 游戏安卓版 Mod 发布仓库，主要提供中文翻译、显示调整�
 | [ガークリ R](https://girlscreation-r.com/)                   | 少女艺术绮谭         | 维护中     | LemonLoader  |
 | [クルスタ X](https://x.twinklestarknights.jp/)               | 闪耀星骑士           | 维护中     | LemonLoader  |
 | [テンパラ X](https://tenkei-paradox.com/x)                   | 天启悖论             | 已停止维护 | Frida Gadget |
-| [STELLAR IDOL PROJECT 〜 X 〜](https://x.siprj.com/)         | STELLAR IDOL PROJECT | 实验性     | Frida Gadget |
-| [オトフロ R](https://games.dmm.co.jp/detail/otogi_f_r)       | 童话前线             | 维护中     | Frida Gadget |
+| [STELLAR IDOL PROJECT 〜 X 〜](https://x.siprj.com/)         | STELLAR IDOL PROJECT | 实验性     | LemonLoader  |
+| [オトフロ R](https://games.dmm.co.jp/detail/otogi_f_r)       | 童话前线             | 维护中     | LemonLoader  |
 | [マブガル X](https://www.muvluv-girls-garden.com/x)          | 少女花园             | 维护中     | LemonLoader  |
 
 ## 下载与发布
@@ -59,7 +59,7 @@ mod-<game>-v<source_version>
 
 `source_version` 通常取自 DMM Store 返回的应用版本代码，与游戏内显示的版本号不同
 
-- 每天北京时间 14:15 和 16:15 检查更新
+- 以聚合站和 Releases 页面实际发布的版本为准
 - GitHub Actions 可能因排队而延迟开始
 - 聚合站适合直接查找当前版本，Releases 页面适合查看历史版本和发布记录
 - 游戏 APK、Mod 部署包或构建配方发生变化时，工作流会按对应目标重新构建
@@ -72,11 +72,15 @@ mod-<game>-v<source_version>
 
 ### 覆盖更新
 
-使用本站发布的同一游戏新版 APK 直接覆盖安装即可，正常情况下会保留游戏数据、LemonLoader 配置和翻译缓存
+使用本站发布的同一游戏新版 APK 直接覆盖安装即可，正常情况下会保留游戏数据、LemonLoader 配置和翻译缓存。升级跨版本 Loader 前建议备份 `UserData` 中的自定义配置
 
 不要为了更新先卸载旧版，卸载会同时删除该 `.mod` 包名下的全部应用数据
 
 如果系统拒绝覆盖安装，通常是签名、包名或版本降级导致，此时先备份数据再决定是否卸载重装
+
+新版 APK 已包含匹配的 Loader 和 Mod，无需另外安装 Patcher 或 .NET。从旧版升级到
+LemonLoader 0.7.4 时，覆盖安装后重启应用即可更新运行时；不要把旧 Loader、游戏 Interop
+或 PC 版 Mod DLL 复制进新版。自行安装的额外 Mod 需要确认与新版 Loader 和当前游戏兼容
 
 ### 应用数据
 
@@ -86,21 +90,28 @@ mod-<game>-v<source_version>
 /storage/emulated/0/Android/data/<包名>/
 ```
 
-Android 11 及更高版本通常会限制普通文件管理器访问 `Android/data`，可使用支持目录授权的文件管理器或 ADB 操作
+Android 11 及更高版本通常会限制普通文件管理器访问 `Android/data`，可使用支持当前系统
+目录访问的文件管理器或 ADB 操作；存储访问框架不保证能授权该目录
 
 ## LemonLoader
 
-部分游戏使用使用 LemonLoader 加载 C# Mod，包括：
+当前维护的以下游戏使用 LemonLoader 加载 C# Mod；历史 APK 可能仍使用旧运行方式：
 
 - 像素深渊
 - 少女艺术绮谭
 - 闪耀星骑士
+- STELLAR IDOL PROJECT
+- 童话前线
 - 少女花园
 
-项目地址：[anosu/LemonLoader](https://github.com/anosu/LemonLoader)
+项目地址：[LemonLoaderX/LemonLoader](https://github.com/LemonLoaderX/LemonLoader)。当前构建使用
+[v0.7.4-android.3](https://github.com/LemonLoaderX/LemonLoader/releases/tag/v0.7.4-android.3)，
+历史发布包的 Loader 版本以各自日志和发布说明为准
 
 > [!WARNING]
-> 不保证兼容性，部分设备可能会出现闪退或者功能无效等问题，届时可以在本仓库中提 issue，并确保附上相关日志文件以便排查，设备信息等，如果你是专业人士建议附上崩溃部分 logcat 日志
+> 部分设备或模拟器可能出现闪退或功能无效。MuMu 等使用 ARM 转译的模拟器仍可能出现
+> `DobbyHook -1`，新版 Loader 尚未解决这一限制。反馈时请附游戏与 APK 版本、设备或模拟器
+> 信息、Android 版本及相关日志；启动早期没有文件日志时，请提供对应时间的 logcat
 
 ### 运行目录
 
@@ -112,12 +123,21 @@ LemonLoader 根目录位于修改版应用的外部数据目录
 
 以下路径均相对于上述 `MelonLoader` 根目录
 
-| 内容           | 路径         |
-| -------------- | ------------ |
-| 当前启动日志   | `Latest.log` |
-| 历史日志       | `Logs/`      |
-| Mod 文件       | `Mods/`      |
-| Mod 配置和数据 | `UserData/`  |
+| 内容                 | 路径                                                         |
+| -------------------- | ------------------------------------------------------------ |
+| 当前启动日志         | `MelonLoader/Latest.log`                                     |
+| 上次启动日志         | `MelonLoader/Previous.log`                                   |
+| 历史日志             | `MelonLoader/Logs/`                                          |
+| 运行时崩溃报告       | `MelonLoader/.dotnet/crash-reports/`                         |
+| Android 异常退出记录 | `MelonLoader/SystemExit/`（Android 11 及以上，系统有记录时） |
+| Mod 文件             | `Mods/`                                                      |
+| Mod 配置和数据       | `UserData/`                                                  |
+| Loader 配置          | `UserData/Loader.cfg`                                        |
+
+日志目录比根目录多一层 `MelonLoader`，例如完整当前日志路径为
+`/storage/emulated/0/Android/data/<包名>/files/MelonLoader/MelonLoader/Latest.log`。
+崩溃报告不保证每次都有；异常退出记录在下次启动时收集。Loader 的私有 .NET 运行时由 APK
+自动管理，不需要搬到此目录或手动替换
 
 ### 配置规则
 
@@ -128,7 +148,9 @@ LemonLoader 根目录位于修改版应用的外部数据目录
 - 启动期配置修改后需要重新启动游戏
 - 不要在游戏运行期间替换 DLL、字体或配置文件
 
-配置文件没有生成或功能异常时，先检查 `Latest.log` 中是否出现 LemonLoader 启动、Mod 加载和配置初始化记录
+配置文件没有生成或功能异常时，先检查 `MelonLoader/Latest.log` 中是否出现 LemonLoader
+启动、Mod 加载和配置初始化记录。Android 版通过配置文件设置功能，PC 版的 F1
+ConfigurationManager 窗口和桌面快捷键不适用于这里
 
 ## 游戏说明
 
@@ -144,19 +166,21 @@ LemonLoader 根目录位于修改版应用的外部数据目录
 - 可关闭进入游戏时的音量提醒
 - 可关闭进入游戏时的标题动画
 - 可调整剧情 Live2D 缩放倍率
+- 可独立隐藏寝室 CG 中的角色眼镜
 
 #### 配置
 
 配置文件：`UserData/AbyssMod.cfg`
 
-| 配置项                      | 默认值  | 用途                               |
-| --------------------------- | ------- | ---------------------------------- |
-| `General.DynamicMosaic`     | `false` | 是否启用游戏内动态马赛克           |
-| `General.SoundCaution`      | `false` | 是否显示进入游戏时的音量提醒       |
-| `General.VoiceInterruption` | `false` | 下一段无声文本是否中断当前角色语音 |
-| `General.TitleMovie`        | `true`  | 是否播放进入游戏时的标题动画       |
-| `General.NovelLive2DScale`  | `1.0`   | 剧情 Live2D 缩放倍率               |
-| `Translation.Enabled`       | `true`  | 是否启用翻译                       |
+| 配置项                      | 默认值  | 用途                                             |
+| --------------------------- | ------- | ------------------------------------------------ |
+| `General.DynamicMosaic`     | `false` | 是否启用游戏内动态马赛克                         |
+| `General.HideNovelGlasses`  | `false` | 是否隐藏寝室 CG 中角色眼镜，下次载入 Live2D 生效 |
+| `General.SoundCaution`      | `false` | 是否显示进入游戏时的音量提醒                     |
+| `General.VoiceInterruption` | `false` | 下一段无声文本是否中断当前角色语音               |
+| `General.TitleMovie`        | `true`  | 是否播放进入游戏时的标题动画                     |
+| `General.NovelLive2DScale`  | `1.0`   | 剧情 Live2D 缩放倍率                             |
+| `Translation.Enabled`       | `true`  | 是否启用翻译                                     |
 
 翻译开关、CDN、语言、缓存目录和字体路径属于启动期配置，修改后需要重启游戏
 
@@ -304,10 +328,41 @@ Android 版通过配置文件调整功能，修改后需要重启游戏。完整
 #### 功能
 
 - 减小马赛克
-- 实验性剧情翻译
+- 剧情文本与角色名称翻译，支持本地缓存和离线回退
+- 中文 TextMeshPro 字体
 - 开启战斗跳过按钮并允许后台战斗
+- 可选自动跳过和静默战斗
 - 剧情语音不中断和文本框透明
 - 跳过剧情时不再要求确认
+
+#### 配置
+
+配置文件：`UserData/SiprjMod.cfg`，修改后重启游戏
+
+| 配置项                       | 默认值    | 用途                                       |
+| ---------------------------- | --------- | ------------------------------------------ |
+| `Battle.AutoSkip`            | `false`   | 开局自动触发战斗跳过                       |
+| `Battle.SilentMode`          | `false`   | 不加载战斗场景并直接结算，实验性功能       |
+| `Scenario.DynamicMosaic`     | `false`   | 是否显示动态马赛克                         |
+| `Scenario.CameraMovement`    | `true`    | 是否启用剧情镜头移动                       |
+| `Scenario.VoiceInterruption` | `true`    | 下一条文本是否中断当前语音；关闭后保留语音 |
+| `Scenario.TransparentFrame`  | `false`   | 是否隐藏对话文本框，不隐藏文本             |
+| `Translation.Enable`         | `true`    | 是否启用翻译                               |
+| `Translation.Language`       | `zh_Hans` | 翻译语言                                   |
+
+语音不中断和文本框透明需要关闭 `Scenario.VoiceInterruption`、开启
+`Scenario.TransparentFrame`。静默战斗与后台能力解锁仍需按实际游戏场景判断是否使用
+
+#### 数据文件
+
+| 内容     | 路径                                  |
+| -------- | ------------------------------------- |
+| 字体     | `UserData/SiprjMod/myuenprc-semibold` |
+| 翻译缓存 | `UserData/SiprjMod/translations/`     |
+
+#### 相关项目
+
+- [SiprjMod-Android](https://github.com/anosu/SiprjMod-Android)
 
 <a id="otogifrontier"></a>
 
@@ -319,8 +374,18 @@ Android 版通过配置文件调整功能，修改后需要重启游戏。完整
 - 固定帧率为 60
 - 移除游戏内动态添加的马赛克
 
+#### 配置
+
+配置文件：`UserData/OtogiMod.cfg`，修改后重启游戏。翻译资源和字体使用以下配置：
+
+| 配置项                         | 默认值                                                                        | 用途             |
+| ------------------------------ | ----------------------------------------------------------------------------- | ---------------- |
+| `OtogiMod.Translation.CDN`     | `https://raw.githubusercontent.com/alex343425/otogitranslate/refs/heads/main` | 翻译资源地址     |
+| `OtogiMod.Translation.FontURL` | `https://assets.ntr.best/android/fonts/otogi-font`                            | 翻译字体资源地址 |
+
 #### 相关项目
 
+- [OtogiMod-Android](https://github.com/anosu/OtogiMod-Android)
 - [otogitranslate](https://github.com/alex343425/otogitranslate)：角色剧情翻译和网页版插件
 
 <a id="muvluvgg"></a>
@@ -366,27 +431,32 @@ Android 版通过配置文件调整功能，修改后需要重启游戏。完整
 
 先完全退出游戏并重新启动，仍然无效时重启手机，再确认当前 APK 与游戏版本是否匹配
 
-LemonLoader 游戏应检查 `Latest.log` 中是否出现对应 Mod 的加载记录
+LemonLoader 游戏应检查 `MelonLoader/Latest.log` 中是否出现对应 Mod 的加载记录
 
 ### 配置文件没有生成
 
-配置文件只会在 Mod 成功加载后生成，先查看 `Latest.log`，确认对应 DLL 已从 `Mods/` 目录加载
+配置文件只会在 Mod 成功加载后生成，先查看 `MelonLoader/Latest.log`，确认对应 DLL 已从 `Mods/` 目录加载
 
 ### 游戏启动后闪退
 
 先确认设备为 ARM64，并尝试安装最新发布版本
 
-持续闪退通常表示当前设备、系统环境或游戏版本不兼容，可在反馈时附上游戏版本、设备型号、Android 版本和日志
+持续闪退时请附上 APK 下载来源和版本、设备或模拟器型号、Android 版本，以及
+`MelonLoader/Latest.log`、`MelonLoader/Previous.log`。如存在崩溃报告或 `SystemExit`
+记录也请一并提供；没有文件日志时可通过 ADB 收集 logcat。日志可能包含路径和设备信息，
+分享前请检查内容
 
 ### 翻译或字体异常
 
 检查网络、字体文件和翻译缓存目录，必要时备份后删除对应游戏的翻译缓存，让 Mod 重新下载
 
-字体加载失败时先确认对应游戏部分列出的字体文件存在，再检查 `Latest.log` 中的加载错误
+字体加载失败时先确认对应游戏部分列出的字体文件存在，再检查 `MelonLoader/Latest.log` 中的加载错误
 
 ### 无法访问 `Android/data`
 
-这是 Android 11 之后的系统限制，并非 Mod 创建目录失败，可改用支持存储访问框架授权的文件管理器或通过 ADB 访问
+这是 Android 11 之后的系统限制，并非 Mod 创建目录失败，可改用支持当前系统目录访问的
+文件管理器或通过 ADB 访问。新系统也可能限制存储访问框架对该目录的授权。
+先让应用启动并自行创建目录，不要通过 ADB 预先创建 `files/MelonLoader`，以免目录权限不正确
 
 ## 免责声明
 
